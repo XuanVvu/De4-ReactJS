@@ -1,19 +1,54 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 
 import "../../scss/style.scss"
 
-import { PRODUCT_DATA } from '../../assets/data/data'
+import { PRODUCT_DATA } from '../../assets/data/data' 
+import { NavLink } from 'react-router-dom'
+
+const DATA = [{
+  display:'Top sellers'
+},
+{
+  display:'Featured'
+}, 
+{
+  display:'Most reviews'
+}]
 
 const Product = () => {
+  const [appState, ChangeState] = useState({
+    activeObject: null,
+    objects: [...DATA],
+});
+
+
+const toggleActive = (index, item) => {
+    ChangeState({ ...appState, activeObject: appState.objects[index] });
+    
+};
+
+const toggleActiveStyles = (index) => {
+    if (appState.objects[index] === appState.activeObject) {
+        return 'active';
+    } else {
+        return 'inactive';
+    }
+};
   return (
     <Fragment>
         <div className="product-wrapper">
           <div className="container">
             <div className="tab-bar">
               <ul>
-                <li>Top sellers</li>
-                <li>Featured</li>
-                <li>Most reviews</li>
+                {DATA.map((item, index) => (
+                    <li key={index} 
+                    className={toggleActiveStyles(index)}
+                    
+                    onClick={() => toggleActive(index, item)}>
+                      {item.display}
+                      </li>
+                ))}
+               
               </ul>
             </div>
            
