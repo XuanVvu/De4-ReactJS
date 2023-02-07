@@ -1,0 +1,54 @@
+.slider {
+  &-item {
+    .banner {
+      position: absolute;
+      top: 91%;
+      left: 50%;
+      transform: translateX(-50%);
+
+      .row {
+        margin: 0;
+        padding-top: 6px;
+
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        .banner-item {
+          height: 100%;
+          @include col(33.333%);
+          background: #fff;
+          padding: 0;
+          @include flex();
+          flex-direction: column;
+          font-family: "Poppins";
+          position: relative;
+
+          &-content {
+            position: absolute;
+            top: 50%;
+            text-align: center;
+            width: 100%;
+            padding: 0 50px;
+
+            .banner-item-title {
+              color: #000;
+              font-size: 18px;
+              font-weight: bold;
+              text-transform: uppercase;
+              margin-bottom: 20px;
+              position: relative;
+              top: -2px;
+            }
+
+            .banner-item-summary {
+              position: relative;
+              top: -4px;
+              color: #898989;
+              line-height: 23px;
+              font-size: 14px;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}
